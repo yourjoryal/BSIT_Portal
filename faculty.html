@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSIT Faculty | CTU</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="public/css/faculty.css">
+
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="public/images/bsitlogo.jpg" alt="BSIT Logo">
+        <span>BSIT Department</span>
+    </div>
+
+    <div style="flex: 1;"></div> <!-- fills space -->
+
+    <!-- Hamburger menu at the far right -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+    </div>
+
+    <nav>
+        <ul id="menu">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="profile.html">Program Profile</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="student-orgs.html">Student Organizations</a></li>
+            <li><a href="announcements.html">Announcements</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="inquiries.html">Inquiries</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<section id="faculty-list">
+    <h2>Meet The BSIT Tabuelan Faculty</h2>
+    <div class="faculty-grid">
+
+        <!-- 1 -->
+        <div class="faculty-card">
+            <img src="public/images/johncarlestrella.png" alt="Mr. JOHN CARL ESTRELLA">
+            <h3>Mr. JOHN CARL ESTRELLA</h3>
+            <p>1TAB Class Adviser</p>
+            <button onclick="openModal('modal1')">View Full Profile</button>
+        </div>
+
+        <!-- 2 -->
+        <div class="faculty-card">
+            <img src="public/images/bocales.jpg" alt="Mr. JIMF BOCALES">
+            <h3>Mr. JIMF BOCALES</h3>
+            <p>2TAB & 4TAB Class Adviser</p>
+            <button onclick="openModal('modal2')">View Full Profile</button>
+        </div>
+
+        <!-- 3 -->
+        <div class="faculty-card">
+            <img src="public/images/paglinawanA.jpg" alt="Mrs. ALYSSA MARIE PAGLINAWAN">
+            <h3>Mrs. ALYSSA MARIE PAGLINAWAN</h3>
+            <p>3TAB Class Adviser</p>
+            <button onclick="openModal('modal3')">View Full Profile</button>
+        </div>
+
+        <!-- 4 -->
+        <div class="faculty-card">
+            <img src="public/images/otto.jpg" alt="Mr. JOHN VINCENT OTTO">
+            <h3>Mr. JOHN VINCENT OTTO</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal4')">View Full Profile</button>
+        </div>
+
+        <!-- 5 -->
+        <div class="faculty-card">
+            <img src="public/images/castro.jpg" alt="Mrs. RHIANNE CASTRO">
+            <h3>Mrs. RHIANNE CASTRO</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal5')">View Full Profile</button>
+        </div>
+
+        <!-- 6 -->
+        <div class="faculty-card">
+            <img src="public/images/icon.jpg" alt="Mr. LEONARDO ALBIT JR.">
+            <h3>Mr. LEONARDO ALBIT JR.</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal6')">View Full Profile</button>
+        </div>
+
+        <!-- 7 -->
+        <div class="faculty-card">
+            <img src="public/images/paglinawan.jpg" alt="Mr. JOHNREL PAGLINAWAN">
+            <h3>Mr. JOHNREL PAGLINAWAN</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal7')">View Full Profile</button>
+        </div>
+
+        <!-- 8 -->
+        <div class="faculty-card">
+            <img src="public/images/genson.jpg" alt="Mr. EFREIM CHRISTIAN GENSON">
+            <h3>Mr. EFREIM CHRISTIAN GENSON</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal8')">View Full Profile</button>
+        </div>
+
+        <!-- 9 -->
+        <div class="faculty-card">
+            <img src="public/images/jimenez.jpg" alt="Ms. MICAH JIMENEZ">
+            <h3>Ms. MICAH JIMENEZ</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal9')">View Full Profile</button>
+        </div>
+
+        <!-- 10 -->
+        <div class="faculty-card">
+            <img src="public/images/orquia.jpg" alt="Mrs. BELINDA ORQUIA">
+            <h3>Mrs. BELINDA ORQUIA</h3>
+            <p>Instructor</p>
+            <button onclick="openModal('modal10')">View Full Profile</button>
+        </div>
+
+    </div>
+</section>
+</main>
+
+<!-- MODALS -->
+<!-- Modal 1 -->
+<!-- Modals --> <div id="modal1" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal1')">&times;</span> <h3>Name:</h3> <p>Mr. JOHN CARL ESTRELLA</p> <h3>Advisory:</h3> <p>BSIT 1TAB</p> <h3>Description:</h3> <p>Currently handling Computer Programming 1 (Lab and Lecture) and Database Management Systems subjects, providing students with hands-on programming experience, foundational coding skills, and practical knowledge in database design, development, and management.</p> </div> </div> <div id="modal2" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal2')">&times;</span> <h3>Name:</h3> <p>Mr. JIMF BOCALES</p> <h3>Advisory:</h3> <p>BSIT 2TAB & BSIT 4TAB</p> <h3>Description:</h3> <p>Currently handling Web Systems and Technologies, Information Assurance and Security 2 (Lecture and Lab), and Systems Administration and Maintenance, providing students with practical and theoretical knowledge in web development, cybersecurity principles, and IT system administration and maintenance.</p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mrs. ALYSSA MARIE PAGLINAWAN</p> <h3>Advisory:</h3> <p>BSIT 3TAB</p> <h3>Description:</h3> <p>Currently handling System Integration and Architecture 1 and Networking 2 (Lab and Lecture), equipping students with essential skills in system design, network configuration, and practical networking operations.</p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mr. JOHN VINCENT OTTO</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Multimedia 1 and Quantitative Methods (Modeling and Simulation), providing students with foundational skills in multimedia development and practical applications of quantitative analysis, modeling, and simulation techniques.</p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mrs. RHIANNE CASTRO</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Introduction to Computing and Introduction to Human-Computer Interaction, guiding students in foundational computing concepts and the principles of designing effective, user-friendly interfaces.<p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mr. LEONARDO ALBIT JR.</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Data Structures and Algorithms (Lab and Lecture), providing students with a strong foundation in algorithm design, data organization, and problem-solving techniques essential for efficient software development.<p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mr. JOHNREL PAGLINAWAN</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Object-Oriented Programming and Capstone Project and Research 2, equipping students with advanced programming skills, software design principles, and practical experience in conducting research and developing comprehensive projects.<p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mr. EFREIM CHRISTIAN GENSON</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Applications Development and Emerging Technologies, guiding students in modern software development practices and exposing them to innovative and cutting-edge technologies shaping the IT industry.<p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Ms. MICAH JIMENEZ</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Systems Integration and Architecture 2, providing students with advanced knowledge in system design, integration strategies, and best practices for building efficient, scalable IT infrastructures.<p> </div> </div> <div id="modal3" class="modal"> <div class="modal-content"> <span class="close-btn" onclick="closeModal('modal3')">&times;</span> <h3>Name:</h3> <p>Mrs. BELINDA ORQUIA</p> <h3>Advisory:</h3> <p>NONE</p> <h3>Description:</h3> <p>Currently handling Cross-Platform Script Development Technology, equipping students with the skills to develop scripts and applications that run efficiently across multiple operating systems and platforms.<p> </div> </div>
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+function openModal(id) { document.getElementById(id).style.display = "flex"; }
+function closeModal(id) { document.getElementById(id).style.display = "none"; }
+window.onclick = function(event) {
+    document.querySelectorAll(".modal").forEach(modal => {
+        if (event.target === modal) modal.style.display = "none";
+    });
+};
+
+
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+
+// Close menu when clicking outside
+window.onclick = function(event) {
+    const menu = document.getElementById("menu");
+    const hamburger = document.querySelector(".hamburger");
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove("show");
+    }
+};
+
+</script>
+
+<footer>
+    &copy; 2025 CTU BSIT Department. All Rights Reserved.
+</footer>
+
+</body>
+</html>
