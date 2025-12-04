@@ -18,10 +18,9 @@
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
-
   <!-- SIDE MENU -->
   <div id="sideMenu" class="side-menu">
-   <li><a href="homepage.html">Home</a></li>
+    <li><a href="homepage.html">Home</a></li>
     <a href="faculty.html">Faculty</a>
     <a href="organizations.html">Student Organizations</a>
     <a href="announcements.html">Announcements</a>
@@ -72,28 +71,29 @@
       </div>
     </div>
 
-<footer>
-    © 2025 BSIT Department - Cebu Technological University Tabuelan Campus
-</footer>
-
   </main>
 
-    <script>
-  const sideMenu = document.getElementById("sideMenu");
-  const hamburger = document.querySelector(".hamburger");
+  <!-- FIXED FOOTER (NOW OUTSIDE MAIN) -->
+  <footer>
+      © 2025 BSIT Department - Cebu Technological University Tabuelan Campus
+  </footer>
 
-  // Toggle menu when hamburger clicked
-  hamburger.addEventListener("click", () => {
-    sideMenu.classList.toggle("open");
-  });
+  <script>
+    const sideMenu = document.getElementById("sideMenu");
+    const hamburger = document.querySelector(".hamburger");
 
-  // Close menu if clicked outside
-  document.addEventListener("click", (e) => {
-    if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      sideMenu.classList.remove("open");
-    }
-  });
-</script>
+    // Toggle menu when hamburger clicked
+    hamburger.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+    });
+
+    // Close menu if clicked outside
+    document.addEventListener("click", (e) => {
+      if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        sideMenu.classList.remove("open");
+      }
+    });
+  </script>
 
 </body>
 </html>
