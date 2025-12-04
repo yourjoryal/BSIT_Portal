@@ -12,7 +12,7 @@
     <h1>Send an Inquiry</h1>
     <p class="subtitle">We will respond within 24–48 hours.</p>
 
-    <form action="#" method="post" class="form-box">
+    <form action="#" method="post" class="form-box" onsubmit="goHome(event)">
 
         <label>Full Name
             <input type="text" name="fullname" placeholder="Enter your name" required>
@@ -34,6 +34,12 @@
     </form>
 </div>
 
+<script>
+function goHome(event) {
+    event.preventDefault();  // Prevent normal form submission
+    window.location.href = "backtohome.html"; // Redirect to homepage
+}
+</script>
+
 </body>
 </html>
-
