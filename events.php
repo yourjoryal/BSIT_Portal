@@ -97,6 +97,70 @@ $result = mysqli_query($conn, "SELECT * FROM events ORDER BY id DESC");
 <link rel="stylesheet" href="public/css/announcements.css">
 <style>
 /* ===== ADMIN FORM ===== */
+.announcement-card {
+    display: flex;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.announcement-card .thumb {
+    flex-shrink: 0;
+    width: 120px; /* fixed width for all images */
+    height: 120px; /* fixed height for all images */
+    overflow: hidden;
+}
+
+.announcement-card .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crops image to fit nicely */
+    display: block;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.announcement-card .content {
+    padding: 15px 20px;
+    flex: 1;
+}
+
+.announcement-card .content h2 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.announcement-card .content p {
+    margin: 3px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.announcement-card .delete-btn,
+.announcement-card .edit-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.delete-btn {
+    background: #e63946;
+    color: #fff;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #4361ee, #4cc9f0);
+    color: #fff;
+    margin-left: 8px;
+}
+
 .admin-form {
     background: linear-gradient(135deg, #ffffff, #f3f6ff);
     color: #000;
