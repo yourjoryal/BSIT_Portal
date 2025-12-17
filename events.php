@@ -148,6 +148,12 @@ $result = mysqli_query($conn, "SELECT * FROM events ORDER BY id DESC");
       <button type="submit" name="<?php echo $edit_mode ? 'update_event' : 'add_event'; ?>">
           <?php echo $edit_mode ? 'Update Event' : 'Add Event'; ?>
       </button>
+ <form method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Event Title" required>
+    <input type="text" name="event_date" placeholder="Event Date (e.g. Jan 31, 2025 · 6:00 PM)" required>
+    <textarea name="description" placeholder="Event Description" required></textarea>
+    <input type="file" name="image" accept="image/*" required>
+    <button type="submit" name="add_event">Add Event</button>
   </form>
 </div>
 
@@ -165,9 +171,15 @@ if (mysqli_num_rows($result) > 0) {
       <h2 class="title"><?php echo $row['title']; ?></h2>
       <p class="date"><?php echo $row['event_date']; ?></p>
       <p class="description"><?php echo $row['description']; ?></p>
-
       <a href="events.php?delete=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
       <a href="events.php?edit=<?php echo $row['id']; ?>" class="delete-btn" style="background: linear-gradient(135deg, #4361ee, #4cc9f0); margin-left:10px;">Edit</a>
+
+      <!-- DELETE BUTTON -->
+      <a href="events.php?delete=<?php echo $row['id']; ?>"
+         class="delete-btn"
+         onclick="return confirm('Are you sure you want to delete this event?');">
+         Delete
+      </a>
     </div>
   </div>
 <?php
