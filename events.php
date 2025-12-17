@@ -241,9 +241,6 @@ $result = mysqli_query($conn, "SELECT * FROM events ORDER BY id DESC");
         <?php echo $edit_mode ? 'Update Event' : 'Add Event'; ?>
     </button>
   </form>
-      <?php if (isset($_GET['success']) && $_GET['success'] == 2) { ?>
-        <p class="success">Event updated successfully!</p>
-      <?php } ?>
 </div>
 
 <!-- EVENTS LIST -->
