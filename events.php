@@ -219,25 +219,20 @@ if (mysqli_num_rows($result) > 0) {
 ?>
   <div class="announcement-card">
     <div class="thumb"><img src="public/images/<?php echo $row['image']; ?>" alt=""></div>
-    <div class="content">
-      <h2 class="title"><?php echo htmlspecialchars($row['title']); ?></h2>
-      <p class="date"><?php echo htmlspecialchars($row['event_date']); ?></p>
-      <p class="description"><?php echo htmlspecialchars($row['description']); ?></p>
       <div class="content">
-    <h2 class="title"><?php echo htmlspecialchars($row['title']); ?></h2>
-    <p class="date"><?php echo htmlspecialchars($row['event_date']); ?></p>
-    <p class="description"><?php echo htmlspecialchars($row['description']); ?></p>
+        <h2 class="title"><?php echo htmlspecialchars($row['title']); ?></h2>
+        <p class="date"><?php echo htmlspecialchars($row['event_date']); ?></p>
+        <p class="description"><?php echo htmlspecialchars($row['description']); ?></p>
 
-    <div class="action-buttons">
-        <a href="events.php?delete=<?php echo $row['id']; ?>" 
-           style="color:white;background:#e63946;padding:5px 12px;border-radius:6px;" 
-           onclick="return confirm('Are you sure?');">Delete</a>
+        <div class="action-buttons">
+            <a href="events.php?delete=<?php echo $row['id']; ?>" 
+              style="color:white;background:#e63946;padding:5px 12px;border-radius:6px;" 
+              onclick="return confirm('Are you sure?');">Delete</a>
 
-        <a href="events.php?edit=<?php echo $row['id']; ?>" 
-           style="color:white;background:#4361ee;padding:5px 12px;border-radius:6px;">Edit</a>
+            <a href="events.php?edit=<?php echo $row['id']; ?>" 
+              style="color:white;background:#4361ee;padding:5px 12px;border-radius:6px;">Edit</a>
+        </div>
     </div>
-</div>
-
     </div>
   </div>
 <?php
