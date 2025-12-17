@@ -7,30 +7,18 @@ if (!$conn) {
 
 /* ADD EVENT */
 if (isset($_POST['add_event'])) {
-
   $title = mysqli_real_escape_string($conn, $_POST['title']);
   $event_date = mysqli_real_escape_string($conn, $_POST['event_date']);
   $description = mysqli_real_escape_string($conn, $_POST['description']);
+  $image = mysqli_real_escape_string($conn, $_POST['image']);
 
-  /* IMAGE UPLOAD */
-  $image_name = $_FILES['image']['name'];
-  $image_tmp  = $_FILES['image']['tmp_name'];
+  $insert = "INSERT INTO events (title, event_date, description, image)
+             VALUES ('$title', '$event_date', '$description', '$image')";
+  mysqli_query($conn, $insert);
 
-  // Rename image to avoid duplicates
-  $new_image = time() . "_" . $image_name;
-  $upload_path = "public/images/" . $new_image;
-
-  if (move_uploaded_file($image_tmp, $upload_path)) {
-
-    $insert = "INSERT INTO events (title, event_date, description, image)
-               VALUES ('$title', '$event_date', '$description', '$new_image')";
-    mysqli_query($conn, $insert);
-
-    header("Location: events.php?success=1");
-    exit();
-  } else {
-    echo "Image upload failed.";
-  }
+  // PREVENT FORM RESUBMISSION
+  header("Location: events.php?success=1");
+  exit();
 }
 
 /* DELETE EVENT */
@@ -52,61 +40,10 @@ $result = mysqli_query($conn, "SELECT * FROM events ORDER BY id DESC");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Events</title>
+<link rel="stylesheet" href="public/css/events.css">
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #0a1a33;
-  color: #fff;
-  margin: 0;
-}
-
-/* HEADER */
-header {
-  background: #08162b;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo img {
-  width: 40px;
-}
-.hamburger {
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* SIDE MENU */
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
-  background: #08162b;
-  padding-top: 80px;
-  transition: 0.3s;
-}
-.side-menu.open {
-  left: 0;
-}
-.side-menu a {
-  display: block;
-  color: #fff;
-  padding: 15px 20px;
-  text-decoration: none;
-}
-.side-menu a:hover {
-  background: #102654;
-}
-
-/* ADMIN FORM */
+/* SIMPLE ADMIN FORM */
 .admin-form {
   background: #fff;
   color: #000;
@@ -114,6 +51,9 @@ header {
   max-width: 600px;
   margin: 120px auto 30px;
   border-radius: 8px;
+}
+.admin-form h2 {
+  margin-bottom: 15px;
 }
 .admin-form input,
 .admin-form textarea {
@@ -124,67 +64,38 @@ header {
 .admin-form button {
   background: #0a1a33;
   color: #fff;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
-  width: 100%;
-}
-.success {
-  color: green;
-  text-align: center;
-}
-
-/* EVENTS */
-.announcements-container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
-}
-.announcement-card {
-  background: #fff;
-  color: #000;
-  display: flex;
-  gap: 15px;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-.thumb img {
-  width: 200px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 6px;
 }
 .delete-btn {
+  display: inline-block;
   background: crimson;
   color: #fff;
   padding: 6px 12px;
-  border-radius: 4px;
-  text-decoration: none;
-  display: inline-block;
   margin-top: 10px;
+  border-radius: 4px;
 }
-
-/* FOOTER */
-footer {
+.success {
   text-align: center;
-  padding: 15px;
-  background: #08162b;
-  margin-top: 30px;
+  color: green;
+  margin-bottom: 10px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="logo">
-    <img src="public/images/bsitlogo.jpg">
+    <img src="public/images/bsitlogo.jpg" alt="BSIT Logo">
     <span>BSIT Department</span>
   </div>
   <div class="hamburger">☰</div>
 </header>
 
+<!-- SIDE MENU -->
 <div id="sideMenu" class="side-menu">
   <a href="homepage.html">Home</a>
   <a href="faculty.html">Faculty</a>
@@ -195,7 +106,7 @@ footer {
   <a href="inquiries.html">Inquiries</a>
 </div>
 
-<!-- ADD EVENT -->
+<!-- ADD EVENT FORM -->
 <div class="admin-form">
   <h2>Add New Event</h2>
 
@@ -203,11 +114,11 @@ footer {
     <p class="success">Event added successfully!</p>
   <?php } ?>
 
-  <form method="POST" enctype="multipart/form-data">
+  <form method="POST">
     <input type="text" name="title" placeholder="Event Title" required>
-    <input type="text" name="event_date" placeholder="Event Date" required>
+    <input type="text" name="event_date" placeholder="Event Date (e.g. Jan 31, 2025 · 6:00 PM)" required>
     <textarea name="description" placeholder="Event Description" required></textarea>
-    <input type="file" name="image" accept="image/*" required>
+    <input type="text" name="image" placeholder="Image filename (e.g. sinulog.jpg)" required>
     <button type="submit" name="add_event">Add Event</button>
   </form>
 </div>
@@ -215,27 +126,33 @@ footer {
 <!-- EVENTS LIST -->
 <main class="announcements-container">
 
-<?php if (mysqli_num_rows($result) > 0) {
-  while ($row = mysqli_fetch_assoc($result)) { ?>
-    <div class="announcement-card">
-      <div class="thumb">
-        <img src="public/images/<?php echo $row['image']; ?>">
-      </div>
-      <div class="content">
-        <h2><?php echo $row['title']; ?></h2>
-        <p><?php echo $row['event_date']; ?></p>
-        <p><?php echo $row['description']; ?></p>
-
-        <a href="events.php?delete=<?php echo $row['id']; ?>"
-           class="delete-btn"
-           onclick="return confirm('Delete this event?');">
-           Delete
-        </a>
-      </div>
+<?php
+if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+?>
+  <div class="announcement-card">
+    <div class="thumb">
+      <img src="public/images/<?php echo $row['image']; ?>" alt="Event Image">
     </div>
-<?php } } else { ?>
-  <p style="text-align:center;">No events available.</p>
-<?php } ?>
+    <div class="content">
+      <h2 class="title"><?php echo $row['title']; ?></h2>
+      <p class="date"><?php echo $row['event_date']; ?></p>
+      <p class="description"><?php echo $row['description']; ?></p>
+
+      <!-- DELETE BUTTON -->
+      <a href="events.php?delete=<?php echo $row['id']; ?>"
+         class="delete-btn"
+         onclick="return confirm('Are you sure you want to delete this event?');">
+         Delete
+      </a>
+    </div>
+  </div>
+<?php
+  }
+} else {
+  echo "<p style='text-align:center;'>No events available.</p>";
+}
+?>
 
 </main>
 
@@ -247,13 +164,15 @@ footer {
 const sideMenu = document.getElementById("sideMenu");
 const hamburger = document.querySelector(".hamburger");
 
-hamburger.onclick = () => sideMenu.classList.toggle("open");
+hamburger.addEventListener("click", () => {
+  sideMenu.classList.toggle("open");
+});
 
-document.onclick = (e) => {
+document.addEventListener("click", (e) => {
   if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
     sideMenu.classList.remove("open");
   }
-};
+});
 </script>
 
 </body>
