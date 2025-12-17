@@ -170,7 +170,7 @@ footer { text-align:center; padding:18px; background:#0f1a3b; font-size:14px; co
 </div>
 
 <section class="announcement-banner">
-  <h1>Announcements & Events</h1>
+  <h1>Events</h1>
   <p class="sub">Stay updated with the latest happenings</p>
 </section>
 
